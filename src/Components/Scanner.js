@@ -8,7 +8,7 @@ export default function Scanner() {
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
     const [url, setUrl] = useState('')
-
+    console.log(scanned)
     useEffect(() => {
         (async () => {
             const { status } = await BarCodeScanner.requestPermissionsAsync();
@@ -16,6 +16,11 @@ export default function Scanner() {
         })();
     }, []
     );
+
+    const linkUrl = (url) => {
+        Linking.openURL(url)
+        setScanned(false)
+    }
 
     const handleBarCodeScanned = ({ type, data }) => {
         setScanned(true);
@@ -39,7 +44,7 @@ export default function Scanner() {
             <BarCodeScanner
                 onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
                 style={{
-                    height: 300,
+                    height: 500,
                     width: 500,
                     borderBottomWidth: 2,
                     alignSelf: 'center'
@@ -47,8 +52,8 @@ export default function Scanner() {
             />
             <View style={{ alignSelf: 'center' }}>
                 {scanned
-                    ? Linking.openURL(url)
-                    : <Button title={'Voltar'}/>
+                    ? linkUrl(url)
+                    : <Text> Scanner Free </Text>
                 }
             </View>
         </View>
