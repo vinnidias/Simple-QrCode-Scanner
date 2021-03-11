@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, Linking, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import DefaultButton from './DefaultButton'
 import styles from '../styles'
 
 
-export default function Scanner() {
+export default function Scanner({onPress}) {
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
     const [url, setUrl] = useState('')
-    console.log(scanned)
+    
     useEffect(() => {
         (async () => {
             const { status } = await BarCodeScanner.requestPermissionsAsync();
@@ -50,10 +51,10 @@ export default function Scanner() {
                     alignSelf: 'center'
                 }}
             />
-            <View style={{ alignSelf: 'center' }}>
+            <View style={{ alignSelf: 'center', margin: 10 }}>
                 {scanned
                     ? linkUrl(url)
-                    : <Text> Scanner Free </Text>
+                    : <DefaultButton onPress={onPress} title={'Voltar'}/>
                 }
             </View>
         </View>
