@@ -40,7 +40,7 @@ export default function Scanner() {
             style={{
                 padding: 50
             }}>
-            <Text style={styles.headerScannerText} >Posicione a Câmera no QrCode</Text>
+            <Text style={styles.headerScannerText}> Aponte para o QR Code! </Text>
             <BarCodeScanner
                 onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
                 style={{
