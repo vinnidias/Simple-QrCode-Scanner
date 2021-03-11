@@ -1,20 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import styles from './src/styles'
+import Scanner from   './src/Components/Scanner'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Qr Code Simples</Text>
-    </View>
+   <Scanner/>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
