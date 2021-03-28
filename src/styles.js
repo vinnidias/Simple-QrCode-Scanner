@@ -38,11 +38,26 @@ const styles = {
     padding: 20,
     backgroundColor: 'black'
   },
+
   textButton: {
     alignSelf: 'center',
     color: 'white',
     fontWeight: 'bold',
     fontSize: 18
+  },
+
+  loadingIcon: {
+    alignSelf: 'center',
+    height: 300,
+    width: 210,
+  },
+
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 30,
+    marginTop: 60
   }
 };
 

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, Linking, Button } from 'react-native';
+import { Text, View, Linking, Button, Image, Alert } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import DefaultButton from './DefaultButton'
 import styles from '../styles'
 
 
-export default function Scanner({onPress}) {
+export default function Scanner({ onPress }) {
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
     const [url, setUrl] = useState('')
-    
+
     useEffect(() => {
         (async () => {
             const { status } = await BarCodeScanner.requestPermissionsAsync();
@@ -18,9 +18,11 @@ export default function Scanner({onPress}) {
     }, []
     );
 
-    const linkUrl = (url) => {
+    const linkUrl = async (url) => {
+        const before = await setScanned(false)
+        before
         Linking.openURL(url)
-        setScanned(false)
+        
     }
 
     const handleBarCodeScanned = ({ type, data }) => {
@@ -30,7 +32,7 @@ export default function Scanner({onPress}) {
     };
 
     if (hasPermission === null) {
-        return <Text>Requisitando acesso para a câmera</Text>;
+
     }
     if (hasPermission === false) {
         return <Text>Não há permissão para uso da câmera</Text>;
@@ -53,9 +55,24 @@ export default function Scanner({onPress}) {
             />
             <View style={{ alignSelf: 'center', margin: 10 }}>
                 {scanned
-                    ? linkUrl(url)
-                    : <DefaultButton onPress={onPress} title={'Voltar'}/>
+                    ? Alert.alert(
+                        "Esse é o link gerado pelo Qr Code: ",
+                        `${url}`,
+                        [
+                            {
+                                text: "Cancelar",
+                                onPress: () => setScanned(false),
+                                style: "cancel"
+                            },
+                            {
+                                text: "Ir", onPress: async () =>  {linkUrl(url); setScanned(false)}
+                            }
+                        ],
+                        { cancelable: false }
+                    )
+                    : console.log(scanned)
                 }
+                <DefaultButton onPress={onPress} title={'Voltar'} />
             </View>
         </View>
     );
