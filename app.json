@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "SimpleQrCodeScannerApp",
-    "slug": "SimpleQrCodeScannerApp",
+    "name": "QrSimples",
+    "slug": "QrSimples",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#EFCADC"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -17,13 +17,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.qrsimples.qrsimples",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.qrsimples.qrsimples",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
