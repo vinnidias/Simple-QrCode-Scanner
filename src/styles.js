@@ -24,7 +24,7 @@ const styles = {
   },
 
   buttonContainer: {
-    height: 300,
+    height: 250,
     width: 360,
     justifyContent: 'space-around',
     alignSelf: 'center',
@@ -58,6 +58,12 @@ const styles = {
     alignItems: 'center',
     padding: 30,
     marginTop: 60
+  },
+
+  adHeader:{
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    marginBottom: 10,
   }
 };
 
