@@ -64,6 +64,18 @@ const styles = {
     justifyContent: 'space-between',
     flexDirection: 'row',
     marginBottom: 10,
+  },
+
+  couponCard: { 
+    backgroundColor: 'EFCADC',
+    width: 300, 
+    height: 400, 
+    borderWidth: 1, 
+    borderColor: 'grey', 
+    borderRadius: 15, 
+    alignItems: 'center', 
+    padding: 25,
+    marginBottom: 25
   }
 };
 

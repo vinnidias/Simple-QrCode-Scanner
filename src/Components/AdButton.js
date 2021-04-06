@@ -7,7 +7,7 @@ function AdButton({onAdPress}) {
         <TouchableOpacity onPress={onAdPress} >
             <Image
                 source={require('../Images/ad-icon2.png')}
-                style={{ height: 40, width: 409, alignSelf: 'center' }}
+                style={{ height: 40, width: 40, alignSelf: 'center' }}
             />
         </TouchableOpacity>
     )
