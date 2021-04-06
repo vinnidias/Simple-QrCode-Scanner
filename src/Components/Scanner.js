@@ -5,7 +5,7 @@ import DefaultButton from './DefaultButton'
 import styles from '../styles'
 
 
-export default function Scanner({ onPress }) {
+export default function Scanner({route, navigation}) {
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
     const [url, setUrl] = useState('')
@@ -72,7 +72,7 @@ export default function Scanner({ onPress }) {
                     )
                     : console.log(scanned)
                 }
-                <DefaultButton onPress={onPress} title={'Voltar'} />
+                <DefaultButton onPress={()=> navigation.navigate('MyQrCodeScreen')} title={'Voltar'} />
             </View>
         </View>
     );
