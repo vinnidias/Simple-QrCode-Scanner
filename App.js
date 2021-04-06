@@ -1,46 +1,31 @@
-import React, { useState } from 'react';
-import { Text, View, Alert, Linking } from 'react-native';
-import styles from './src/styles'
+import React from 'react';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+
 import Scanner from './src/Components/Scanner'
 import MyQrCode from './src/Components/MyQrCode'
+import CouponSelector from './src/Components/CouponSelector'
+
+const Stack = createStackNavigator()
 
 export default function App() {
-  const [visible, setVisible] = useState(false)
-  const url = 'https://github.com/vinnidias'
-  const instaUrl = 'https://www.instagram.com/vinni.diass/'
-
 
   return (
-    <View style={{flex: 1}}>
-      {
-        visible
-          ? <Scanner onPress={() => setVisible(false)} />
-          : <MyQrCode
-            onInstaPress={() => Linking.openURL(instaUrl)}
-            onQrPress={() => setVisible(true)}
-            onImgPress={() => {
-              Alert.alert(
-                "Esse é o link desse Qr Code: ",
-                `${url}`,
-                [
-                  {
-                    text: "Cancelar",
-                    onPress: () => { cancelable: true },
-                    style: "cancel"
-                  },
-                  {
-                    text: "Ir", onPress: async () => { Linking.openURL(url) }
-                  }
-                ],
-                { cancelable: false }
-              )
-            }}
-          />
-      }
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName='MyQrCodeScreen'
+        screenOptions={{ headerShown: false}}
+      >
+
+        <Stack.Screen name='MyQrCodeScreen' component={MyQrCode}/>
+        <Stack.Screen name='ScannerScreen' component={Scanner}/>
+        <Stack.Screen name='CouponSelectorScreen' component={CouponSelector}/>
+
+      </Stack.Navigator>
+    </NavigationContainer>
 
 
   );
 }
-
-
