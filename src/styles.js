@@ -69,7 +69,7 @@ const styles = {
   couponCard: { 
     backgroundColor: 'EFCADC',
     width: 300, 
-    height: 400, 
+    height: 450, 
     borderWidth: 1, 
     borderColor: 'grey', 
     borderRadius: 15, 
